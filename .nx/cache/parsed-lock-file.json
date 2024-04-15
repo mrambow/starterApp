@@ -1449,6 +1449,15 @@
         "hash": "sha512-/j+7Qa4BxQA5aOU43cwXuiudfSXfoHFsAVfcehH5DkSjxLykZKWHEuE4uFJXqdkSIbAHjS37D0Sde6ENP6G/MA=="
       }
     },
+    "npm:@capacitor/ios": {
+      "type": "npm",
+      "name": "npm:@capacitor/ios",
+      "data": {
+        "version": "5.7.4",
+        "packageName": "@capacitor/ios",
+        "hash": "sha512-tQH24WMSYVKYr/Jl1gFImooQmu8OdXUFHoDaPV1WpZIiwbwxbTdwOXeLlGes5U8B8t7xuxTWMWMDt3IwRlDbhQ=="
+      }
+    },
     "npm:@capacitor/keyboard": {
       "type": "npm",
       "name": "npm:@capacitor/keyboard",
@@ -13208,6 +13217,11 @@
     },
     {
       "source": "npm:@capacitor/haptics",
+      "target": "npm:@capacitor/core",
+      "type": "static"
+    },
+    {
+      "source": "npm:@capacitor/ios",
       "target": "npm:@capacitor/core",
       "type": "static"
     },
