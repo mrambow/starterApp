@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package sinc.cases.ebeihilfe;
 
 import com.getcapacitor.BridgeActivity;
 
