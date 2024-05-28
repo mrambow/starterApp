@@ -24,3 +24,23 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+/* stylelint-disable-next-line scss/selector-nest-combinators */
+ion-input.has-focus,
+button:focus-visible,
+ion-button.ion-focused,
+ion-segment-button.ion-focused,
+ion-radio.ion-focused,
+ion-select.ion-focused,
+ion-fab.ion-focused,
+ion-searchbar.ion-focused,
+ion-checkbox.ion-focused,
+ion-toggle.ion-focused,
+ion-range.ion-focused,
+ion-datetime.ion-focused,
+ion-accordion.ion-focused,
+ion-textarea.ion-focused {
+  outline-color: red;
+  outline-offset: 4px;
+  outline-style: solid;
+}
