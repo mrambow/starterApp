@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button  class="page-focus"></ion-menu-button>
     </ion-buttons>
     <ion-title>{{ folder }}</ion-title>
   </ion-toolbar>
@@ -14,26 +14,11 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <ion-accordion-group>
-      <ion-accordion value="first">
-        <ion-item slot="header" color="light">
-          <ion-label>First Accordion</ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content">First Content</div>
-      </ion-accordion>
-      <ion-accordion value="second">
-        <ion-item slot="header" color="light">
-          <ion-label>Second Accordion</ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content">Second Content</div>
-      </ion-accordion>
-      <ion-accordion value="third">
-        <ion-item slot="header" color="light">
-          <ion-label>Third Accordion</ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content">Third Content</div>
-      </ion-accordion>
-    </ion-accordion-group>
-  </div>
+
+  <ion-button>test 1</ion-button>
+  <ion-button>test 2</ion-button>
+  <ion-button>test 3</ion-button>
+  <ion-button>test 4</ion-button>
+
+
 </ion-content>
