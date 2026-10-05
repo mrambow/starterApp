@@ -1,23 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterFocusService } from './services/focus.services';
+import { Component } from '@angular/core';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
+  /** One page per Ionic accessibility issue; see README.md. */
   public appPages = [
-    { title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    { title: '1 ion-input-otp', url: '/repro/otp', icon: 'keypad' },
+    { title: '2 ion-menu focus', url: '/repro/menu', icon: 'menu' },
+    { title: '3 ion-accordion heading', url: '/repro/accordion', icon: 'list' },
+    { title: '4 ion-modal aria-labelledby', url: '/repro/modal', icon: 'albums' },
+    { title: '5 tabindex forwarding', url: '/repro/tabindex', icon: 'return-down-forward' },
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor(private blah: RouterFocusService) {}
-
-  ngOnInit(): void {
-    this.blah.init()
-  }
 }
