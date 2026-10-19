@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ion-input-otp a11y repro</title>
+    <!-- Framework-free repro: ion-input-otp lives in @ionic/core, no Angular needed.
+         Ionic version via ?v=… (default 9.0.8), e.g. otp.html?v=8.8.5 to compare. -->
+    <script>
+      const v = new URLSearchParams(location.search).get('v') || '9.0.8';
+      const base = `https://cdn.jsdelivr.net/npm/@ionic/core@${v}`;
+      document.write(`<link rel="stylesheet" href="${base}/css/ionic.bundle.css">`);
+      document.write(`<script type="module" src="${base}/dist/ionic/ionic.esm.js"><\/script>`);
+      window.IONIC_VERSION = v;
+    </script>
+  </head>
+  <body>
+    <ion-app>
+      <ion-content class="ion-padding">
+        <h1>ion-input-otp</h1>
+        <p>Expected: inputs named like "PIN, Ziffer 1 von 6", error text associated via aria-describedby, visible focus outline.</p>
+
+        <ion-input-otp length="6" aria-label="PIN" aria-describedby="err" aria-invalid="true"></ion-input-otp>
+        <p id="err" role="alert">Der eingegebene PIN ist nicht korrekt.</p>
+
+        <ion-button id="inspect">Inspect inputs</ion-button>
+        <pre id="log">Tab into the component, then press "Inspect inputs".</pre>
+      </ion-content>
+    </ion-app>
+    <script>
+      document.getElementById('inspect').addEventListener('click', () => {
+        const host = document.querySelector('ion-input-otp');
+        // Ionic 9 renders into a shadow root (#30884); Ionic 8 into light DOM.
+        const root = host.shadowRoot ?? host;
+        const group = root.querySelector('[role="group"]');
+        const lines = [...root.querySelectorAll('input')].map((input, i) => {
+          const cs = getComputedStyle(input);
+          return `input ${i + 1}: aria-label="${input.getAttribute('aria-label')}" aria-describedby=${input.getAttribute('aria-describedby')} aria-invalid=${input.getAttribute('aria-invalid')} outline=${cs.outlineStyle} ${cs.outlineWidth}`;
+        });
+        lines.unshift(
+          `Ionic ${window.IONIC_VERSION}, shadow=${!!host.shadowRoot}`,
+          `host aria-label="${host.getAttribute('aria-label')}" → group aria-label="${group?.getAttribute('aria-label')}" aria-describedby=${group?.getAttribute('aria-describedby')} aria-invalid=${group?.getAttribute('aria-invalid')}`,
+        );
+        document.getElementById('log').textContent = lines.join('\n');
+      });
+    </script>
+  </body>
+</html>
